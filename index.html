@@ -6,23 +6,27 @@ Ubuntu电脑 or 虚拟机（Ubuntu系统）
 显示屏 、HDMI转接线、键鼠
 
 二、进行烧录（参考瑞泰教程）[参考一]: https://www.jianguoyun.com/p/Dd3RSWwQ5cbrChi_09YEIAA	“瑞泰帮助文档-烧录，密码：realtimes2022”
-1.系统软件包的下载1.1 烧录所需文件集中在这两个文件夹中，在本部分我选择安装LT4 R32.7.1版本
-
-1.2根据Jetson类型进行选择
+2.1 系统软件包的下载2.1.1 烧录所需文件集中在这两个文件夹中，在本部分我选择安装LT4 R32.7.1版本
 
 
+2.1.2根据Jetson类型进行选择
 
-1.3根据载板型号进行选择
 
-1.4随便选择一个版本
 
-1.5下载对应文件，其中rtso-6002对应位置即为载板型号
 
-1.6选择对应版本的L4T文件
+2.1.3根据载板型号进行选择
 
-1.7下载相应文件
 
-2、在PC端Ubuntu系统进行烧录环境..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/05/18/Jetson%20NX/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/images/Pytorch2trt/image-2.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2023/05/18/Torch2Trt/"><img class="post-cover-img js-img-fadeIn" src="/images/Pytorch2trt/image-2.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/05/18/Torch2Trt/">成功解决Pytorch模型转trt模型中得BatchNorm问题</a></h2><time class="has-text-grey" datetime="2023-05-18T06:12:16.513Z">2023-05-18</time><p class="is-flex-grow-2 mt-2">Pytorch模型转trt模型如果你想把你的模型投入到应用中或者是想提升模型的运行速度，除了对网络进行压缩、蒸馏外，最好的方法就是将模型转成tensor模型，使用tensorrt实现对网络的加速。但是当该模型的功能是图像增强或者是图像生成，并且模型中运用了大量的batchnorm2d函数，运用网上现成的方法会发现模型转成onnx以及trt后，模型的处理效果大幅下降，想解决此问题就可以详细往下看了：我们的方法顺序是：pytorch模型先转成onnx模型，接着将onnx模型转成trt模型
+2.1.4随便选择一个版本
+
+
+2.1.5下载对应文件，其中rtso-6002对应位置即为载板型号
+
+
+2.1.6选择对应版本的L4T文件
+
+
+2.1.7下载相应文件..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/2023/05/18/Jetson%20NX/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/images/Pytorch2trt/image-2.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/2023/05/18/Torch2Trt/"><img class="post-cover-img js-img-fadeIn" src="/images/Pytorch2trt/image-2.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/2023/05/18/Torch2Trt/">成功解决Pytorch模型转trt模型中得BatchNorm问题</a></h2><time class="has-text-grey" datetime="2023-05-18T06:12:16.513Z">2023-05-18</time><p class="is-flex-grow-2 mt-2">Pytorch模型转trt模型如果你想把你的模型投入到应用中或者是想提升模型的运行速度，除了对网络进行压缩、蒸馏外，最好的方法就是将模型转成tensor模型，使用tensorrt实现对网络的加速。但是当该模型的功能是图像增强或者是图像生成，并且模型中运用了大量的batchnorm2d函数，运用网上现成的方法会发现模型转成onnx以及trt后，模型的处理效果大幅下降，想解决此问题就可以详细往下看了：我们的方法顺序是：pytorch模型先转成onnx模型，接着将onnx模型转成trt模型
 一、pytorch to onnx核心代码：
 import torch
 from torchvision.utils import save_image

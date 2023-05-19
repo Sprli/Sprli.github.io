@@ -275,47 +275,63 @@ Size是分区的大小，最小8GB，建议可以将SSD卡内存全部添入<br>
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python3.7
 python3.7 <span class="token parameter variable">-V</span>  <span class="token comment">#查看是否安装成功</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li>创建软连接，使python3默认指向python3.7<br>
-首先把之前的软连接删除：</li>
+<li>创建软连接，使python3默认指向python3.7</li>
 </ol>
+<ul>
+<li>首先把之前的软连接删除：</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> /usr/bin/python3 
 <span class="token function">which</span> python3.7  <span class="token comment"># 查看python3.7 安装路径.这里输出/usr/bin/python3.7</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>创建新的软连接：</p>
+<ul>
+<li>创建新的软连接：</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">ln</span> <span class="token parameter variable">-s</span> /usr/bin/python3.7 /usr/bin/python3  <span class="token comment"># 添加python3的软链接。 /usr/bin/python3.7 即 which python3.7输出的安装路径</span>
 python3 <span class="token parameter variable">-V</span>  <span class="token comment"># 测试是否安装成功</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>切换python版本，<br>
-<a href="jetson%E5%8F%AF%E4%BB%A5%E5%AE%89%E8%A3%85minconda%E6%9D%A5%E4%BD%BF%E7%94%A8conda%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E5%A6%82%E5%AE%89%E8%A3%85virtualenv%E6%9D%A5%E7%9A%84%E6%96%B9%E4%BE%BF%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%8D%A0%E5%86%85%E5%AD%98%E4%B9%9F%E4%B8%8D%E5%B0%8F">^解释</a>: 对于不同版本的jetpack，其cuda对应的python版本有所不同，使用该方法便于配合cuda的使用<br>
-<code>ls /usr/bin/python* # 查看python文件，会出现python2.7、python3.6、python3.7三个版本</code><br>
-首先看看系统是否配置过python相关的管理信息<br>
-<code>update-alternatives --list python # 如果显示：no alternatives for python，表示没有配置过。</code><br>
-使用以下命令进行配置：</li>
+<a href="jetson%E5%8F%AF%E4%BB%A5%E5%AE%89%E8%A3%85minconda%E6%9D%A5%E4%BD%BF%E7%94%A8conda%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E5%A6%82%E5%AE%89%E8%A3%85virtualenv%E6%9D%A5%E7%9A%84%E6%96%B9%E4%BE%BF%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%8D%A0%E5%86%85%E5%AD%98%E4%B9%9F%E4%B8%8D%E5%B0%8F">^解释</a>: 对于不同版本的jetpack，其cuda对应的python版本有所不同，使用该方法便于配合cuda的使用</li>
 </ol>
+<ul>
+<li>首先查看python文件<br>
+<code>ls /usr/bin/python* # 查看python文件，会出现python2.7、python3.6、python3.7三个版本</code></li>
+<li>首先看看系统是否配置过python相关的管理信息<br>
+<code>update-alternatives --list python # 如果显示：no alternatives for python，表示没有配置过。</code></li>
+<li>使用以下命令进行配置：</li>
+</ul>
 <pre name="code" class="python">
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7 3
 </pre>
-<p>配置成功，会提示你<code> in auto mode</code>.这个时候我们再次查看配置<br>
-<code>update-alternatives --list python</code><br>
-会看到我们的三个版本已经成功进行了配置。如果需要切换版本，输入命令<br>
-<code>sudo update-alternatives --config python #  然后输入相应的版本序号即可</code><br>
-最后使用：<code>python --version</code>查看版本号，可以发现配置成功</p>
+<ul>
+<li>配置成功，会提示你<code> in auto mode</code>.这个时候我们再次查看配置<br>
+<code>update-alternatives --list python</code></li>
+<li>会看到我们的三个版本已经成功进行了配置。如果需要切换版本，输入命令<br>
+<code>sudo update-alternatives --config python #  然后输入相应的版本序号即可</code></li>
+<li>最后使用：<code>python --version</code>查看版本号，可以发现配置成功</li>
+</ul>
 <h3 id="5-4-安装jtop管理GPU">5.4 安装jtop管理GPU</h3>
 <p>输入命令安装jtop：<br>
 <code>sudo -H pip install jetson-stats</code><br>
 安装成功后，输入<code>sudo jtop</code>即可查看硬件相关信息</p>
 <h3 id="5-5-安装virtualenv来创建虚拟环境">5.5 安装virtualenv来创建虚拟环境</h3>
 <ol>
-<li>安装操作</li>
+<li>安装与配置</li>
 </ol>
+<ul>
+<li>使用pip下载virtualenv</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pip <span class="token function">install</span> virtualenv virtualenvwrapper
 <span class="token function">vim</span> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>将以下内容输入其中：</p>
+<ul>
+<li>将以下内容输入其中：</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#virtualenv and virtualenvwrapper</span>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">WORKON_HOME</span><span class="token operator">=</span><span class="token environment constant">$HOME</span>/.virtualenvs <span class="token comment">#指定所有的需拟环境的安装位置</span>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">VIRTUALENVWRAPPER_PYTHON</span><span class="token operator">=</span>/usr/bin/python3.6 <span class="token comment">#指定解释器，改为cuda对应的python版本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>终端输入指令：</p>
+<ul>
+<li>终端输入指令激活virtualenv</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token environment constant">$HOME</span>/.virtualenvs
 <span class="token builtin class-name">source</span> /usr/local/bin/virtualenvwrapper.sh <span class="token comment">#进行激活生效</span>
 <span class="token builtin class-name">source</span> ~/.bashrc <span class="token comment">#重新载入</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -335,26 +351,36 @@ cpvirtualenv source_name dest_name <span class="token comment"># 复制虚拟环
 <li>创建虚拟环境<br>
 [^声明]: 以创建虚拟环境名位torchli，安装1.10.0版本的pytorch和对应版本0.11.1的torchvision为例</li>
 </ol>
+<ul>
+<li>使用以下命令创建虚拟环境</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Mkvirtualenv <span class="token parameter variable">-p</span> /usr/bin/python3.6 torchli <span class="token comment"># -p 后面跟着的是制定python的版本，因为有的pytorch对python版本有要求，所以要指定版本</span>
 workon torchli <span class="token comment"># 进入虚拟环境</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>如果遇见<code>workon command not find</code>，则使用以下命令<br>
-<code>Source virtualenvwrapper.sh</code><br>
-然后再<code>workon torchli</code><br>
-2. 安装pytorch<br>
-下载pytorch pip wheels（对应自己装的Jatpack的版本），<br>
-[下载网址]: <a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048">https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048</a><br>
-输入命令：</p>
+<ul>
+<li>如果遇见<code>workon command not find</code>，则使用以下命令<br>
+<code>Source virtualenvwrapper.sh</code></li>
+<li>然后再<code>workon torchli</code></li>
+</ul>
+<ol start="2">
+<li>安装pytorch</li>
+</ol>
+<ul>
+<li>首先下载pytorch pip wheels（对应自己装的Jatpack的版本）<br>
+[下载网址]:<a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048">https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048</a></li>
+<li>下载完后，输入命令：</li>
+</ul>
 <pre name="code" class="python">
 pip install torch-1.10.0-cp36-cp36m-linux_aarch64.whl # 安装pytorch
 git clone --branch v0.11.1 https://github.com/pytorch/vision torchvision # 下载0.11.1版本
 cd torchvision
 export BUILD_VERSION=0.11.1
-python setup.py install --user # --user可加可不加
-</pre>
+python setup.py install --user # --user可加可不加</pre>
 <ol start="3">
-<li>验证是否安装成功<br>
-命令输入：</li>
+<li>验证是否安装成功</li>
 </ol>
+<ul>
+<li>上述操作完成后，输入命令：</li>
+</ul>
 <pre name="code" class="python">
 python # 进入python：
 import torch # 导入torch库
@@ -411,32 +437,40 @@ quit<span class="token punctuation">(</span><span class="token punctuation">)</s
 <code>pkg-config --modversion opencv</code></p>
 </li>
 <li>
-<p>卸载原Opencv<br>
-A、如果是自己之前安装的话，就找到当初安装Opencv的build文件夹路径，然后进入该build目录执行卸载操作：</p>
-   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>./opencv-4.x.x/build
+<p>卸载原Opencv</p>
+</li>
+</ol>
+<ul>
+<li>如果是自己之前安装的话，就找到当初安装Opencv的build文件夹路径，然后进入该build目录执行卸载操作：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>./opencv-4.x.x/build
 <span class="token function">sudo</span> <span class="token function">make</span> uninstall
 <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>./opencv-4.x.x
 <span class="token function">sudo</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> build<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>B、若不是则执行以下操作：<br>
+<ul>
+<li>若不是则执行以下操作：</li>
+</ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> purge libopencv*
 <span class="token function">sudo</span> <span class="token function">apt-get</span> purge python-numpy
 <span class="token function">sudo</span> <span class="token function">apt</span> autoremove // 删除其他未使用的apt包，可有可无
 <span class="token function">sudo</span> <span class="token function">apt-get</span> update
-<span class="token function">sudo</span> <span class="token function">apt-get</span> dist-upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
-</li>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> dist-upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
 <li>
 <p>下载Opencv3.4.5.zip文件</p>
 </li>
 <li>
 <p>安装一些相关库和包</p>
-   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> installbuild-essential 
+</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> installbuild-essential 
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> cmake <span class="token function">git</span> libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
 <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> --only-upgrade g++-5 cpp-5 gcc-5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果上述指令失败的话，可以尝试网上换源，如下<br>
 更新后再安装Qt5<br>
 <code>sudo apt-get install qt5-default # qt5必须要安装成功，不过丢包概率不大，都能装上的</code></p>
-</li>
+<ol start="5">
 <li>
 <p>CUDA部分源码的修改<br>
 先找到<code>cuda_gl_interop.h</code>文件，一般都是在<code>/usr/local/cuda/include</code>里<br>
@@ -450,50 +484,46 @@ A、如果是自己之前安装的话，就找到当初安装Opencv的build文�
 <p>开始编译安装opencv-3.4.5<br>
 找到opencv-3.4.5所在文件夹（即前文解压后的文件夹），然后cd到build文件夹里面。<br>
 控制台输入：</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cmake <span class="token parameter variable">-D</span> <span class="token assign-left variable">CMAKE_BUILD_TYPE</span><span class="token operator">=</span>RELEASE <span class="token parameter variable">-D</span> <span class="token assign-left variable">CMAKE_INSTALL_PREFIX</span><span class="token operator">=</span>/usr/local <span class="token punctuation">\</span>
+</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cmake <span class="token parameter variable">-D</span> <span class="token assign-left variable">CMAKE_BUILD_TYPE</span><span class="token operator">=</span>RELEASE <span class="token parameter variable">-D</span> <span class="token assign-left variable">CMAKE_INSTALL_PREFIX</span><span class="token operator">=</span>/usr/local <span class="token punctuation">\</span>
       <span class="token parameter variable">-D</span> <span class="token assign-left variable">WITH_CUDA</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">CUDA_ARCH_BIN</span><span class="token operator">=</span><span class="token string">"6.2"</span> <span class="token parameter variable">-D</span> <span class="token assign-left variable">CUDA_ARCH_PTX</span><span class="token operator">=</span><span class="token string">""</span> <span class="token punctuation">\</span>
       <span class="token parameter variable">-D</span> <span class="token assign-left variable">WITH_CUBLAS</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">ENABLE_FAST_MATH</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">CUDA_FAST_MATH</span><span class="token operator">=</span>ON <span class="token punctuation">\</span>
       <span class="token parameter variable">-D</span> <span class="token assign-left variable">ENABLE_NEON</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">WITH_LIBV4L</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">BUILD_TESTS</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span>
       <span class="token parameter variable">-D</span> <span class="token assign-left variable">BUILD_PERF_TESTS</span><span class="token operator">=</span>OFF <span class="token parameter variable">-D</span> <span class="token assign-left variable">BUILD_EXAMPLES</span><span class="token operator">=</span>OFF <span class="token punctuation">\</span>
       <span class="token parameter variable">-D</span> <span class="token assign-left variable">WITH_QT</span><span class="token operator">=</span>ON <span class="token parameter variable">-D</span> <span class="token assign-left variable">WITH_OPENGL</span><span class="token operator">=</span>ON<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>接着输入：</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">make</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">make</span>
 <span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>配置opencv环境：<br>
+<ol start="7">
+<li>配置opencv环境：<br>
 <code>sudo gedit /etc/ld.so.conf.d/opencv.conf # 创建并打开该文件，输入以下内容</code><br>
 <img src="/images/Jetson/image-20230322013134812.png" alt="image-20230322013134812"><br>
 执行下面的命令，使得刚才配置的路径生效<br>
 <code>sudo ldconfig</code><br>
 然后打开bash.bashrc文件<br>
 <code>sudo gedit /etc/bash.bashrc</code><br>
-在打开文件的最后加入如下命令</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">PKG_CONFIG_PATH</span><span class="token operator">=</span><span class="token variable">$PKG_CONFIG_PATH</span>:/usr/local/lib/pkgconfig
+在打开文件的最后加入如下命令</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">PKG_CONFIG_PATH</span><span class="token operator">=</span><span class="token variable">$PKG_CONFIG_PATH</span>:/usr/local/lib/pkgconfig
 <span class="token builtin class-name">export</span> PKG_CONFIG_PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如图：<br>
 <img src="/images/Jetson/img1.png" alt="img1"><br>
 然后保存文件，使其生效<br>
-<code>source /etc/bash.bashrc</code></p>
-</li>
-<li>
-<p>检查是否成功安装opencv<br>
+<code>source /etc/bash.bashrc</code><br>
+8. 检查是否成功安装opencv<br>
 可以先在jtop查看opencv的安装版本，正确安装后会显示：<br>
-<img src="/images/Jetson/image-20230322013148567.png" alt="image-20230322013148567"></p>
-</li>
-<li>
-<p>之后连接一个摄像头，在终端输入，测试opencv是否能正常使用：</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /opencv-3.4.5/samples/cpp/example_cmake
+<img src="/images/Jetson/image-20230322013148567.png" alt="image-20230322013148567"><br>
+9. 之后连接一个摄像头，在终端输入，测试opencv是否能正常使用：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /opencv-3.4.5/samples/cpp/example_cmake
 cmake <span class="token builtin class-name">.</span>
 <span class="token function">make</span>
 <span class="token comment"># 成功make后，执行</span>
 ./opencv_example<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>上述<code>./opencv_example</code>命令如果失败，原因可能是摄像头的索引错误，<br>
-输入ls usb<br>
+<ol start="10">
+<li>上述<code>./opencv_example</code>命令如果失败，原因可能是摄像头的索引错误，<br>
+输入<code>ls usb</code><br>
 查看摄像头，发现video1<br>
-换一个usb接口插入即可，再执行上述命令，可以发现摄像头成功打开。</p>
-</li>
+换一个usb接口插入即可，再执行上述命令，可以发现摄像头成功打开。</li>
 </ol>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/05/18/Torch2Trt/" title="成功解决Pytorch模型转trt模型中得BatchNorm问题"><span class="has-text-weight-semibold">下一页: 成功解决Pytorch模型转trt模型中得BatchNorm问题</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Sprli/Sprli.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article><article class="mt-6 comment-container" id="vcomments"></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Sprli"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 李祖乐 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2023/05/18/build_web/" title="关于如何使用Hexo搭建自己的Github网站"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: 关于如何使用Hexo搭建自己的Github网站</span></a><a class="button is-default" href="/2023/05/18/Torch2Trt/" title="成功解决Pytorch模型转trt模型中得BatchNorm问题"><span class="has-text-weight-semibold">下一页: 成功解决Pytorch模型转trt模型中得BatchNorm问题</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Sprli/Sprli.github.io" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article><article class="mt-6 comment-container" id="vcomments"></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Sprli"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 李祖乐 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

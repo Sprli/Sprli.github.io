@@ -8,7 +8,7 @@
       <link href="/2023/06/14/ocean_competC2/"/>
       <url>/2023/06/14/ocean_competC2/</url>
       
-        <content type="html"><![CDATA[<p>这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。</p><h2 id="目标检测算法YoloV5的训练以及数据集标注">目标检测算法YoloV5的训练以及数据集标注</h2><h3 id="YoloV5算法模型的使用与简单讲解">YoloV5算法模型的使用与简单讲解</h3><h3 id="数据集的标注">数据集的标注</h3><h3 id="进行训练">进行训练</h3><h2 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h2><h3 id="模型权重文件的类型转换（运行框架）">模型权重文件的类型转换（运行框架）</h3><h3 id="选择框架——DeepStream">选择框架——DeepStream</h3><h3 id="相关代码文件的修改">相关代码文件的修改</h3><h3 id="运行及使用">运行及使用</h3><h2 id="如何实现自启动">如何实现自启动</h2>]]></content>
+        <content type="html"><![CDATA[<p>这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。</p><h3 id="目标检测算法YoloV5">目标检测算法YoloV5</h3><h4 id="YoloV5的使用与简单讲解">YoloV5的使用与简单讲解</h4><h4 id="数据集的标注">数据集的标注</h4><h4 id="进行训练">进行训练</h4><h3 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h3><h4 id="模型权重的文件类型转换">模型权重的文件类型转换</h4><h4 id="选择框架——DeepStream">选择框架——DeepStream</h4><h4 id="相关代码文件的修改">相关代码文件的修改</h4><h4 id="运行及使用">运行及使用</h4><h3 id="如何实现自启动">如何实现自启动</h3>]]></content>
       
       
       

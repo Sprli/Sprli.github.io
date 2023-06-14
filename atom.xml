@@ -6,7 +6,7 @@
   <link href="https://sprli.github.io/atom.xml" rel="self"/>
   
   <link href="https://sprli.github.io/"/>
-  <updated>2023-05-31T17:20:49.849Z</updated>
+  <updated>2023-06-14T03:32:39.494Z</updated>
   <id>https://sprli.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于在Jetson部署Yolov5实现检测与串口通信传送位置信息</title>
+    <link href="https://sprli.github.io/2023/06/14/%E6%B5%B7%E8%B5%9BC2/"/>
+    <id>https://sprli.github.io/2023/06/14/%E6%B5%B7%E8%B5%9BC2/</id>
+    <published>2023-06-14T03:27:11.440Z</published>
+    <updated>2023-06-14T03:32:39.494Z</updated>
+    
+    <content type="html"><![CDATA[<p>这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。</p><h2 id="目标检测算法YoloV5的训练以及数据集标注">目标检测算法YoloV5的训练以及数据集标注</h2><h2 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h2><h2 id="如何实现自启动">如何实现自启动</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。&lt;/p&gt;
+&lt;h2 id=&quot;目标检测算法YoloV5的训练以及数据集标注&quot;&gt;目标检测算法YoloV5的训练以及数据集标注&lt;/h2&gt;
+&lt;h2 id=&quot;将模型部署在Jet</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>cmake学习记录</title>

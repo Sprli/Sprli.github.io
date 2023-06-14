@@ -6,7 +6,7 @@
   <link href="https://sprli.github.io/atom.xml" rel="self"/>
   
   <link href="https://sprli.github.io/"/>
-  <updated>2023-06-14T03:32:39.494Z</updated>
+  <updated>2023-06-14T10:02:10.424Z</updated>
   <id>https://sprli.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://sprli.github.io/2023/06/14/ocean_competC2/"/>
     <id>https://sprli.github.io/2023/06/14/ocean_competC2/</id>
     <published>2023-06-14T03:27:11.440Z</published>
-    <updated>2023-06-14T03:32:39.494Z</updated>
+    <updated>2023-06-14T10:02:10.424Z</updated>
     
-    <content type="html"><![CDATA[<p>这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。</p><h2 id="目标检测算法YoloV5的训练以及数据集标注">目标检测算法YoloV5的训练以及数据集标注</h2><h2 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h2><h2 id="如何实现自启动">如何实现自启动</h2>]]></content>
+    <content type="html"><![CDATA[<p>这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。</p><h2 id="目标检测算法YoloV5的训练以及数据集标注">目标检测算法YoloV5的训练以及数据集标注</h2><h3 id="YoloV5算法模型的使用与简单讲解">YoloV5算法模型的使用与简单讲解</h3><h3 id="数据集的标注">数据集的标注</h3><h3 id="进行训练">进行训练</h3><h2 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h2><h3 id="模型权重文件的类型转换（运行框架）">模型权重文件的类型转换（运行框架）</h3><h3 id="选择框架——DeepStream">选择框架——DeepStream</h3><h3 id="相关代码文件的修改">相关代码文件的修改</h3><h3 id="运行及使用">运行及使用</h3><h2 id="如何实现自启动">如何实现自启动</h2>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;这篇博客用来记录参加海赛C2过程中，如何实现在Jetson Nano上部署目标检测算法以及使用串口通信的方法。&lt;/p&gt;
 &lt;h2 id=&quot;目标检测算法YoloV5的训练以及数据集标注&quot;&gt;目标检测算法YoloV5的训练以及数据集标注&lt;/h2&gt;
-&lt;h2 id=&quot;将模型部署在Jet</summary>
+&lt;h3 id=&quot;YoloV5算法模</summary>
       
     
     

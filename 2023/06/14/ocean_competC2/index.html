@@ -20,7 +20,7 @@ conda create -n label python&amp;#x3D;&amp;#x3D;3.9 # 注意这里必须是pytho
 <li>首先是安装labelimg<br>
 这里是在Anaconda环境下的安装</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">conda create -n label python&#x3D;&#x3D;3.9 # 注意这里必须是python3.9版本，否则安装会导致无法正常使用
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">conda create -n label python&#x3D;&#x3D;3.9 # 注意这里必须是python3.9版本，否则安装会导致无法正常使用
 conda activate label # 激活环境
 pip install labelimg # 使用pip安装labelimg
 labelimg # 这是打开labelimg界面的指令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -54,7 +54,7 @@ Yolo：这个是选择标注数据的格式，其中有很多个选项，根据�
 <img src="/images/OceanC2/2.png" style="zoom: 100%;" /><br>
 如上图所示，copy当前github下载链接，然后在你的虚拟环境下输入命令：</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">git clone git@github.com:ultralytics&#x2F;yolov5.git  # 这条指令会在你的当前路径下载Yolov5文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">git clone git@github.com:ultralytics&#x2F;yolov5.git  # 这条指令会在你的当前路径下载Yolov5文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果失败了，显示没有找到git命令，那么就是当前你的虚拟环境没有安装git，使用conda install git 或者 pip install git命令进行安装<br>
 如果失败了，显示是网络问题，那么可能你需要挂梯子才可以。如果仍然无法解决，那么就尝试开关重启。</p>
 <ol start="2">
@@ -63,24 +63,24 @@ Yolo：这个是选择标注数据的格式，其中有很多个选项，根据�
 如上图所示，点击红圈选项，下载zip文件，随后将其解压即可得到Yolov5官方文件</li>
 </ol>
 <p>然后进入文件目录，在data文件夹下创建一个C2.yaml文件，其内容如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># YOLOv5 🚀 by Ultralytics, AGPL-3.0 license</span>
-<span class="token comment"># COCO128 dataset https://www.kaggle.com/ultralytics/coco128 (first 128 images from COCO train2017) by Ultralytics</span>
-<span class="token comment"># Example usage: python train.py --data coco128.yaml</span>
-<span class="token comment"># parent</span>
-<span class="token comment"># ├── yolov5</span>
-<span class="token comment"># └── datasets</span>
-<span class="token comment">#     └── coco128  ← downloads here (7 MB)</span>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># YOLOv5 🚀 by Ultralytics, AGPL-3.0 license
+# COCO128 dataset https:&#x2F;&#x2F;www.kaggle.com&#x2F;ultralytics&#x2F;coco128 (first 128 images from COCO train2017) by Ultralytics
+# Example usage: python train.py --data coco128.yaml
+# parent
+# ├── yolov5
+# └── datasets
+#     └── coco128  ← downloads here (7 MB)
 
 
-<span class="token comment"># Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]</span>
-path<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>datasets<span class="token operator">/</span>coco128  <span class="token comment"># dataset root dir</span>
-train<span class="token punctuation">:</span> images<span class="token operator">/</span>train2017  <span class="token comment"># train images (relative to 'path') 128 images</span>
-val<span class="token punctuation">:</span> images<span class="token operator">/</span>train2017  <span class="token comment"># val images (relative to 'path') 128 images</span>
-test<span class="token punctuation">:</span>  <span class="token comment"># test images (optional)</span>
+# Train&#x2F;val&#x2F;test sets as 1) dir: path&#x2F;to&#x2F;imgs, 2) file: path&#x2F;to&#x2F;imgs.txt, or 3) list: [path&#x2F;to&#x2F;imgs1, path&#x2F;to&#x2F;imgs2, ..]
+path: ..&#x2F;datasets&#x2F;coco128  # dataset root dir
+train: images&#x2F;train2017  # train images (relative to &#39;path&#39;) 128 images
+val: images&#x2F;train2017  # val images (relative to &#39;path&#39;) 128 images
+test:  # test images (optional)
 
-<span class="token comment"># Classes</span>
-names<span class="token punctuation">:</span>
-  <span class="token number">0</span><span class="token punctuation">:</span> hole<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# Classes
+names:
+  0: hole<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>文件路径以及内容详细参考以下图片：<br>
 <img src="/images/OceanC2/5.png" style="zoom: 100%;" /><br>
 其中：</p>
@@ -93,7 +93,7 @@ names<span class="token punctuation">:</span>
 <p>这里再附上一张训练数据存放的文件夹路径及内容：<br>
 <img src="/images/OceanC2/6.png" style="zoom:100%;" /><br>
 这里只需要关注白色圈中的两个文件夹dataset与yolov5，其中路径相对位置如下：</p>
-<pre class="line-numbers language-none"><code class="language-none"># parent
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># parent
 # ├── yolov5
 # └── datasets
 #     └── coco128
@@ -102,7 +102,7 @@ names<span class="token punctuation">:</span>
 #         └── labels
 #             └── train2017 # 文件夹下是训练图片对应的标注文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>之后按照官方文档进行配置你的虚拟环境，配置完成后即可使用终端在当前路径下输入以下命令进行训练：</p>
-<pre class="line-numbers language-none"><code class="language-none">python train.py --data C2.yaml --weights yolov5n.pt --cfg yolov5n.yaml --img 640  --batch-size 4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">python train.py --data C2.yaml --weights yolov5n.pt --cfg yolov5n.yaml --img 640  --batch-size 4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>指令解释：</p>
 <ul>
 <li>–data：C2.yaml为前面所创建的文件，里面存放的是配置训练数据的相关内容</li>
@@ -114,7 +114,7 @@ names<span class="token punctuation">:</span>
 <p>如果上述命令输入后显示错误，一般来说是你的batch-size设置过大了，调小即可，如2或1。<br>
 当然还有一个前提是，你按照官方文档成功配置好了你的虚拟环境，如pytorch、cuda等。</p>
 <p>训练完成后，你的模型存放在如下路径：</p>
-<pre class="line-numbers language-none"><code class="language-none"># parent
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># parent
 # ├── yolov5
 #     └── runs
 #         └── train
@@ -124,67 +124,67 @@ names<span class="token punctuation">:</span>
 <h3 id="将模型部署在Jetson-nano上">将模型部署在Jetson nano上</h3>
 <h4 id="模型权重的文件类型转换">模型权重的文件类型转换</h4>
 <p>首先将模型类型转换为wts格式，在yolov5文件夹中创建一个gen_wts.py文件，内容如下：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">import</span> argparse
-<span class="token keyword">import</span> os
-<span class="token keyword">import</span> struct
-<span class="token keyword">import</span> torch
-<span class="token keyword">from</span> utils<span class="token punctuation">.</span>torch_utils <span class="token keyword">import</span> select_device
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">import sys
+import argparse
+import os
+import struct
+import torch
+from utils.torch_utils import select_device
 
 
-<span class="token keyword">def</span> <span class="token function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    parser <span class="token operator">=</span> argparse<span class="token punctuation">.</span>ArgumentParser<span class="token punctuation">(</span>description<span class="token operator">=</span><span class="token string">'Convert .pt file to .wts'</span><span class="token punctuation">)</span>
-    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span><span class="token string">'-w'</span><span class="token punctuation">,</span> <span class="token string">'--weights'</span><span class="token punctuation">,</span> required<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
-                        <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'Input weights (.pt) file path (required)'</span><span class="token punctuation">)</span>
-    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span>
-        <span class="token string">'-o'</span><span class="token punctuation">,</span> <span class="token string">'--output'</span><span class="token punctuation">,</span> <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'Output (.wts) file path (optional)'</span><span class="token punctuation">)</span>
-    parser<span class="token punctuation">.</span>add_argument<span class="token punctuation">(</span>
-        <span class="token string">'-t'</span><span class="token punctuation">,</span> <span class="token string">'--type'</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'detect'</span><span class="token punctuation">,</span> choices<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'detect'</span><span class="token punctuation">,</span> <span class="token string">'cls'</span><span class="token punctuation">,</span> <span class="token string">'seg'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token builtin">help</span><span class="token operator">=</span><span class="token string">'determines the model is detection/classification'</span><span class="token punctuation">)</span>
-    args <span class="token operator">=</span> parser<span class="token punctuation">.</span>parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>args<span class="token punctuation">.</span>weights<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">raise</span> SystemExit<span class="token punctuation">(</span><span class="token string">'Invalid input file'</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token keyword">not</span> args<span class="token punctuation">.</span>output<span class="token punctuation">:</span>
-        args<span class="token punctuation">.</span>output <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>args<span class="token punctuation">.</span>weights<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'.wts'</span>
-    <span class="token keyword">elif</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>args<span class="token punctuation">.</span>output<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        args<span class="token punctuation">.</span>output <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>
-            args<span class="token punctuation">.</span>output<span class="token punctuation">,</span>
-            os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>args<span class="token punctuation">.</span>weights<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'.wts'</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> args<span class="token punctuation">.</span>weights<span class="token punctuation">,</span> args<span class="token punctuation">.</span>output<span class="token punctuation">,</span> args<span class="token punctuation">.</span><span class="token builtin">type</span>
+def parse_args():
+    parser &#x3D; argparse.ArgumentParser(description&#x3D;&#39;Convert .pt file to .wts&#39;)
+    parser.add_argument(&#39;-w&#39;, &#39;--weights&#39;, required&#x3D;True,
+                        help&#x3D;&#39;Input weights (.pt) file path (required)&#39;)
+    parser.add_argument(
+        &#39;-o&#39;, &#39;--output&#39;, help&#x3D;&#39;Output (.wts) file path (optional)&#39;)
+    parser.add_argument(
+        &#39;-t&#39;, &#39;--type&#39;, type&#x3D;str, default&#x3D;&#39;detect&#39;, choices&#x3D;[&#39;detect&#39;, &#39;cls&#39;, &#39;seg&#39;],
+        help&#x3D;&#39;determines the model is detection&#x2F;classification&#39;)
+    args &#x3D; parser.parse_args()
+    if not os.path.isfile(args.weights):
+        raise SystemExit(&#39;Invalid input file&#39;)
+    if not args.output:
+        args.output &#x3D; os.path.splitext(args.weights)[0] + &#39;.wts&#39;
+    elif os.path.isdir(args.output):
+        args.output &#x3D; os.path.join(
+            args.output,
+            os.path.splitext(os.path.basename(args.weights))[0] + &#39;.wts&#39;)
+    return args.weights, args.output, args.type
 
 
-pt_file<span class="token punctuation">,</span> wts_file<span class="token punctuation">,</span> m_type <span class="token operator">=</span> parse_args<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Generating .wts for </span><span class="token interpolation"><span class="token punctuation">&#123;</span>m_type<span class="token punctuation">&#125;</span></span><span class="token string"> model'</span></span><span class="token punctuation">)</span>
+pt_file, wts_file, m_type &#x3D; parse_args()
+print(f&#39;Generating .wts for &#123;m_type&#125; model&#39;)
 
-<span class="token comment"># Load model</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Loading </span><span class="token interpolation"><span class="token punctuation">&#123;</span>pt_file<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
-device <span class="token operator">=</span> select_device<span class="token punctuation">(</span><span class="token string">'cpu'</span><span class="token punctuation">)</span>
-model <span class="token operator">=</span> torch<span class="token punctuation">.</span>load<span class="token punctuation">(</span>pt_file<span class="token punctuation">,</span> map_location<span class="token operator">=</span>device<span class="token punctuation">)</span>  <span class="token comment"># Load FP32 weights</span>
-model <span class="token operator">=</span> model<span class="token punctuation">[</span><span class="token string">'ema'</span> <span class="token keyword">if</span> model<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'ema'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token string">'model'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+# Load model
+print(f&#39;Loading &#123;pt_file&#125;&#39;)
+device &#x3D; select_device(&#39;cpu&#39;)
+model &#x3D; torch.load(pt_file, map_location&#x3D;device)  # Load FP32 weights
+model &#x3D; model[&#39;ema&#39; if model.get(&#39;ema&#39;) else &#39;model&#39;].float()
 
-<span class="token keyword">if</span> m_type <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">'detect'</span><span class="token punctuation">,</span> <span class="token string">'seg'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token comment"># update anchor_grid info</span>
-    anchor_grid <span class="token operator">=</span> model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>anchors <span class="token operator">*</span> model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>stride<span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">]</span>
-    <span class="token comment"># model.model[-1].anchor_grid = anchor_grid</span>
-    <span class="token builtin">delattr</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'anchor_grid'</span><span class="token punctuation">)</span>  <span class="token comment"># model.model[-1] is detect layer</span>
-    <span class="token comment"># The parameters are saved in the OrderDict through the "register_buffer" method, and then saved to the weight.</span>
-    model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>register_buffer<span class="token punctuation">(</span><span class="token string">"anchor_grid"</span><span class="token punctuation">,</span> anchor_grid<span class="token punctuation">)</span>
-    model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>register_buffer<span class="token punctuation">(</span><span class="token string">"strides"</span><span class="token punctuation">,</span> model<span class="token punctuation">.</span>model<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>stride<span class="token punctuation">)</span>
+if m_type in [&#39;detect&#39;, &#39;seg&#39;]:
+    # update anchor_grid info
+    anchor_grid &#x3D; model.model[-1].anchors * model.model[-1].stride[..., None, None]
+    # model.model[-1].anchor_grid &#x3D; anchor_grid
+    delattr(model.model[-1], &#39;anchor_grid&#39;)  # model.model[-1] is detect layer
+    # The parameters are saved in the OrderDict through the &quot;register_buffer&quot; method, and then saved to the weight.
+    model.model[-1].register_buffer(&quot;anchor_grid&quot;, anchor_grid)
+    model.model[-1].register_buffer(&quot;strides&quot;, model.model[-1].stride)
 
-model<span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+model.to(device).eval()
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Writing into </span><span class="token interpolation"><span class="token punctuation">&#123;</span>wts_file<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
-<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>wts_file<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'&#123;&#125;\n'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> k<span class="token punctuation">,</span> v <span class="token keyword">in</span> model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        vr <span class="token operator">=</span> v<span class="token punctuation">.</span>reshape<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'&#123;&#125; &#123;&#125; '</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>vr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> vv <span class="token keyword">in</span> vr<span class="token punctuation">:</span>
-            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span>
-            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">'>f'</span><span class="token punctuation">,</span> <span class="token builtin">float</span><span class="token punctuation">(</span>vv<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+print(f&#39;Writing into &#123;wts_file&#125;&#39;)
+with open(wts_file, &#39;w&#39;) as f:
+    f.write(&#39;&#123;&#125;\n&#39;.format(len(model.state_dict().keys())))
+    for k, v in model.state_dict().items():
+        vr &#x3D; v.reshape(-1).cpu().numpy()
+        f.write(&#39;&#123;&#125; &#123;&#125; &#39;.format(k, len(vr)))
+        for vv in vr:
+            f.write(&#39; &#39;)
+            f.write(struct.pack(&#39;&gt;f&#39;, float(vv)).hex())
+        f.write(&#39;\n&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后在你的虚拟环境下运行如下命令：</p>
-<pre class="line-numbers language-none"><code class="language-none">python gen_wts.py -w .&#x2F;runs&#x2F;train&#x2F;exp&#x2F;weights&#x2F;best.pt -o .&#x2F;best.wts -t detect<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">python gen_wts.py -w .&#x2F;runs&#x2F;train&#x2F;exp&#x2F;weights&#x2F;best.pt -o .&#x2F;best.wts -t detect<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>命令解释：</p>
 <ul>
 <li>-w：是权重权重存放位置</li>
@@ -195,9 +195,9 @@ model<span class="token punctuation">.</span>to<span class="token punctuation">(
 <p>然后是将wts格式模型转换为tensorrt格式模型，这里需要使用Github上开源的相关工程文件，使用git clone将工程克隆到任意路径下：<br>
 需要注意的是接下来的操作都是在Jetson系统上进行的。<br>
 使用命令（方法同上）：</p>
-<pre class="line-numbers language-none"><code class="language-none">git clone https:&#x2F;&#x2F;github.com&#x2F;wang-xinyu&#x2F;tensorrtx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">git clone https:&#x2F;&#x2F;github.com&#x2F;wang-xinyu&#x2F;tensorrtx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>该工程目录如下：</p>
-<pre class="line-numbers language-none"><code class="language-none"># ├── tensorrtx
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># ├── tensorrtx
 #     └── yolov5
 #         └── images
 #         └── best.wts # 将上述生成得到的best.wts文件放入此路径
@@ -211,7 +211,7 @@ model<span class="token punctuation">.</span>to<span class="token punctuation">(
 <li>config.h：将其中的kNumClass = 80修改为我们模型训练使用的类别数，这里我修改的kNumClass = 2;<br>
 然后在yolov5路径下使用如下命令将wts格式权重文件转换为engine格式权重文件</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">mkdir build
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">mkdir build
 cd build
 cmake ..
 make
@@ -229,7 +229,7 @@ sudo .&#x2F;yolov5_det -s ..&#x2F;best.wts ..&#x2F;best.engine n<span aria-hidde
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">sudo .&#x2F;yolov5_det -d ..&#x2F;best.engine ..&#x2F;samples<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">sudo .&#x2F;yolov5_det -d ..&#x2F;best.engine ..&#x2F;samples<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>命令解释：</p>
 <ul>
 <li>-d：解释同上，是一种模型选择，即进行测试</li>
@@ -237,7 +237,7 @@ sudo .&#x2F;yolov5_det -s ..&#x2F;best.wts ..&#x2F;best.engine n<span aria-hidde
 <li>…/samples：我们要检测的图片存放路径，这里可自行创建该文件夹，并将自己的图片放入此文件夹<br>
 相关路径：</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none"># ├── tensorrtx
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># ├── tensorrtx
 #     └── yolov5
 #         └── images
 #         └── best.wts # 将上述生成得到的best.wts文件放入此路径
@@ -262,9 +262,9 @@ sudo .&#x2F;yolov5_det -s ..&#x2F;best.wts ..&#x2F;best.engine n<span aria-hidde
 <p>首先需要安装Deepstream，这里需要注意的是必须安装Deepstream5.0版本，不然以下操作可能无效，附上下载地址：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/deepstream-getting-started">https://developer.nvidia.com/deepstream-getting-started</a><br>
 然后就是需要从Github上克隆他人开源的工程文件：<br>
 使用命令（方法同上）：</p>
-<pre class="line-numbers language-none"><code class="language-none">git clone git@github.com:DanaHan&#x2F;Yolov5-in-Deepstream-5.0.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">git clone git@github.com:DanaHan&#x2F;Yolov5-in-Deepstream-5.0.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>该工程目录如下（这里只给出要修改的文件）：</p>
-<pre class="line-numbers language-none"><code class="language-none"># ├── Yolov5-in-Deepstream-5.0
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"># ├── Yolov5-in-Deepstream-5.0
 #     └── Deepstream5.0
 #         └── includes
 #         └── nvdsinfer_custom_impl_Yolo
@@ -334,7 +334,7 @@ static bool NvDsInferParseYoloV5(
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>将上述模型格式转换过程中生成的best.engine与libmyplugins.so文件复制到Deepstream5.0路径下</li>
-<li>修改deepstream_app_config_yoloV5.txt文件，修改细节以及具体注释如下：<pre class="line-numbers language-none"><code class="language-none">...
+<li>修改deepstream_app_config_yoloV5.txt文件，修改细节以及具体注释如下：<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">...
 
 [source0]
 enable&#x3D;1
@@ -388,9 +388,9 @@ tracker-height&#x3D;320
 ll-lib-file&#x3D;&#x2F;opt&#x2F;nvidia&#x2F;deepstream&#x2F;deepstream-5.0&#x2F;lib&#x2F;libnvds_mot_klt.so  # 根据自己的libnvds_mot_klt.so存放路径进行更改，一般而言不需要修改此项。如果是Deepstream5.1，可能需要修改为&#x2F;opt&#x2F;nvidia&#x2F;deepstream&#x2F;deepstream-5.1&#x2F;lib&#x2F;libnvds_mot_klt.so
 ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-<li>在Deepstream5.0路径下创建一个labels.txt文件，内容如下：<pre class="line-numbers language-none"><code class="language-none">hole<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<li>在Deepstream5.0路径下创建一个labels.txt文件，内容如下：<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">hole<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 解释：一个目标一行，即表示索引和内容</li>
-<li>修改Makefile文件内容，细节以及注释如下：<pre class="line-numbers language-none"><code class="language-none">CUDA_VER?&#x3D;10.2
+<li>修改Makefile文件内容，细节以及注释如下：<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">CUDA_VER?&#x3D;10.2
 ifeq ($(CUDA_VER),)
   $(error &quot;CUDA_VER is not set&quot;)
 endif

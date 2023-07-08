@@ -12,7 +12,7 @@ CMake能够输出各种各样的makefile或者project文件，能测试编译器
 <h2 id="二、cmake的使用">二、cmake的使用</h2>
 <h3 id="2-1-CMakeLists-txt的语法">2.1 CMakeLists.txt的语法</h3>
 <p>先附上相关代码</p>
-<pre class="line-numbers language-none"><code class="language-none">cmake_minimum_required(VERSION 3.10)
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">cmake_minimum_required(VERSION 3.10)
 project(yolov5)
 add_definitions(-std&#x3D;c++11)
 add_definitions(-DAPI_EXPORTS)
@@ -67,48 +67,48 @@ target_link_libraries(yolov5_det &#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;lib&#x2F;l
 <h3 id="2-2-Makefile相关语法">2.2 Makefile相关语法</h3>
 <p>有时候我们得到的文件中没有CMakeList.txt文件，但是会有Makefile文件，这时如果我们想修改一下代码以引入一些其他功能，也不是不可能，可以试着修改Makefile文件，尝试实现我们想要的功能。<br>
 先附上相关代码</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c">CUDA_VER<span class="token operator">?</span><span class="token operator">=</span>
-<span class="token function">ifeq</span> <span class="token punctuation">(</span>$<span class="token punctuation">(</span>CUDA_VER<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
-	$<span class="token punctuation">(</span>error <span class="token string">"CUDA_VER is not set"</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">CUDA_VER?&#x3D;
+ifeq ($(CUDA_VER),)
+	$(error &quot;CUDA_VER is not set&quot;)
 endif
 
-OPENCV<span class="token operator">?</span><span class="token operator">=</span>
-<span class="token function">ifeq</span> <span class="token punctuation">(</span>$<span class="token punctuation">(</span>OPENCV<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
-	OPENCV<span class="token operator">=</span><span class="token number">0</span>
+OPENCV?&#x3D;
+ifeq ($(OPENCV),)
+	OPENCV&#x3D;0
 endif
 
-CC<span class="token operator">:</span><span class="token operator">=</span> g<span class="token operator">++</span>
-NVCC<span class="token operator">:</span><span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>cuda<span class="token operator">-</span>$<span class="token punctuation">(</span>CUDA_VER<span class="token punctuation">)</span><span class="token operator">/</span>bin<span class="token operator">/</span>nvcc
+CC:&#x3D; g++
+NVCC:&#x3D;&#x2F;usr&#x2F;local&#x2F;cuda-$(CUDA_VER)&#x2F;bin&#x2F;nvcc
 
-CFLAGS<span class="token operator">:</span><span class="token operator">=</span> <span class="token operator">-</span>Wall <span class="token operator">-</span>std<span class="token operator">=</span>c<span class="token operator">++</span><span class="token number">11</span> <span class="token operator">-</span>shared <span class="token operator">-</span>fPIC <span class="token operator">-</span>Wno<span class="token operator">-</span>error<span class="token operator">=</span>deprecated<span class="token operator">-</span>declarations
-CFLAGS<span class="token operator">+=</span> <span class="token operator">-</span>I<span class="token operator">/</span>opt<span class="token operator">/</span>nvidia<span class="token operator">/</span>deepstream<span class="token operator">/</span>deepstream<span class="token operator">/</span>sources<span class="token operator">/</span>includes <span class="token operator">-</span>I<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>cuda<span class="token operator">-</span>$<span class="token punctuation">(</span>CUDA_VER<span class="token punctuation">)</span><span class="token operator">/</span>include
+CFLAGS:&#x3D; -Wall -std&#x3D;c++11 -shared -fPIC -Wno-error&#x3D;deprecated-declarations
+CFLAGS+&#x3D; -I&#x2F;opt&#x2F;nvidia&#x2F;deepstream&#x2F;deepstream&#x2F;sources&#x2F;includes -I&#x2F;usr&#x2F;local&#x2F;cuda-$(CUDA_VER)&#x2F;include
 
-<span class="token function">ifeq</span> <span class="token punctuation">(</span>$<span class="token punctuation">(</span>OPENCV<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-	COMMON<span class="token operator">=</span> <span class="token operator">-</span>DOPENCV
-	CFLAGS<span class="token operator">+=</span> $<span class="token punctuation">(</span>shell pkg<span class="token operator">-</span>config <span class="token operator">--</span>cflags opencv4 <span class="token number">2</span><span class="token operator">></span> <span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token operator">||</span> pkg<span class="token operator">-</span>config <span class="token operator">--</span>cflags opencv<span class="token punctuation">)</span>
-	LIBS<span class="token operator">+=</span> $<span class="token punctuation">(</span>shell pkg<span class="token operator">-</span>config <span class="token operator">--</span>libs opencv4 <span class="token number">2</span><span class="token operator">></span> <span class="token operator">/</span>dev<span class="token operator">/</span>null <span class="token operator">||</span> pkg<span class="token operator">-</span>config <span class="token operator">--</span>libs opencv<span class="token punctuation">)</span>
+ifeq ($(OPENCV), 1)
+	COMMON&#x3D; -DOPENCV
+	CFLAGS+&#x3D; $(shell pkg-config --cflags opencv4 2&gt; &#x2F;dev&#x2F;null || pkg-config --cflags opencv)
+	LIBS+&#x3D; $(shell pkg-config --libs opencv4 2&gt; &#x2F;dev&#x2F;null || pkg-config --libs opencv)
 endif
 
-CUFLAGS<span class="token operator">:</span><span class="token operator">=</span> <span class="token operator">-</span>I<span class="token operator">/</span>opt<span class="token operator">/</span>nvidia<span class="token operator">/</span>deepstream<span class="token operator">/</span>deepstream<span class="token operator">/</span>sources<span class="token operator">/</span>includes <span class="token operator">-</span>I<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>cuda<span class="token operator">-</span>$<span class="token punctuation">(</span>CUDA_VER<span class="token punctuation">)</span><span class="token operator">/</span>include
+CUFLAGS:&#x3D; -I&#x2F;opt&#x2F;nvidia&#x2F;deepstream&#x2F;deepstream&#x2F;sources&#x2F;includes -I&#x2F;usr&#x2F;local&#x2F;cuda-$(CUDA_VER)&#x2F;include
 
-LIBS<span class="token operator">+=</span> <span class="token operator">-</span>lnvinfer_plugin <span class="token operator">-</span>lnvinfer <span class="token operator">-</span>lnvparsers <span class="token operator">-</span>L<span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>cuda<span class="token operator">-</span>$<span class="token punctuation">(</span>CUDA_VER<span class="token punctuation">)</span><span class="token operator">/</span>lib64 <span class="token operator">-</span>lcudart <span class="token operator">-</span>lcublas <span class="token operator">-</span>lstdc<span class="token operator">++</span>fs
-LFLAGS<span class="token operator">:</span><span class="token operator">=</span> <span class="token operator">-</span>shared <span class="token operator">-</span>Wl<span class="token punctuation">,</span><span class="token operator">--</span>start<span class="token operator">-</span>group $<span class="token punctuation">(</span>LIBS<span class="token punctuation">)</span> <span class="token operator">-</span>Wl<span class="token punctuation">,</span><span class="token operator">--</span>end<span class="token operator">-</span>group
+LIBS+&#x3D; -lnvinfer_plugin -lnvinfer -lnvparsers -L&#x2F;usr&#x2F;local&#x2F;cuda-$(CUDA_VER)&#x2F;lib64 -lcudart -lcublas -lstdc++fs
+LFLAGS:&#x3D; -shared -Wl,--start-group $(LIBS) -Wl,--end-group
 
-INCS<span class="token operator">:</span><span class="token operator">=</span> $<span class="token punctuation">(</span>wildcard <span class="token operator">*</span><span class="token punctuation">.</span>h<span class="token punctuation">)</span>
+INCS:&#x3D; $(wildcard *.h)
 
-SRCFILES<span class="token operator">:</span><span class="token operator">=</span> $<span class="token punctuation">(</span>filter<span class="token operator">-</span>out calibrator<span class="token punctuation">.</span>cpp<span class="token punctuation">,</span> $<span class="token punctuation">(</span>wildcard <span class="token operator">*</span><span class="token punctuation">.</span>cpp<span class="token punctuation">)</span><span class="token punctuation">)</span>
+SRCFILES:&#x3D; $(filter-out calibrator.cpp, $(wildcard *.cpp))
 
-<span class="token function">ifeq</span> <span class="token punctuation">(</span>$<span class="token punctuation">(</span>OPENCV<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-	SRCFILES<span class="token operator">+=</span> calibrator<span class="token punctuation">.</span>cpp
+ifeq ($(OPENCV), 1)
+	SRCFILES+&#x3D; calibrator.cpp
 endif
 
-SRCFILES<span class="token operator">+=</span> $<span class="token punctuation">(</span>wildcard layers<span class="token comment">/*.cpp)
-SRCFILES+= $(wildcard *.cu)
+SRCFILES+&#x3D; $(wildcard layers&#x2F;*.cpp)
+SRCFILES+&#x3D; $(wildcard *.cu)
 
-TARGET_LIB:= libnvdsinfer_custom_impl_Yolo.so
+TARGET_LIB:&#x3D; libnvdsinfer_custom_impl_Yolo.so
 
-TARGET_OBJS:= $(SRCFILES:.cpp=.o)
-TARGET_OBJS:= $(TARGET_OBJS:.cu=.o)
+TARGET_OBJS:&#x3D; $(SRCFILES:.cpp&#x3D;.o)
+TARGET_OBJS:&#x3D; $(TARGET_OBJS:.cu&#x3D;.o)
 
 all: $(TARGET_LIB)
 
@@ -116,14 +116,14 @@ all: $(TARGET_LIB)
 	$(CC) -c $(COMMON) -o $@ $(CFLAGS) $&lt;
 
 %.o: %.cu $(INCS) Makefile
-	$(NVCC) -c -o $@ --compiler-options '-fPIC' $(CUFLAGS) $&lt;
+	$(NVCC) -c -o $@ --compiler-options &#39;-fPIC&#39; $(CUFLAGS) $&lt;
 
 $(TARGET_LIB) : $(TARGET_OBJS)
 	$(CC) -o $@  $(TARGET_OBJS) $(LFLAGS)
 
 clean:
 	rm -rf $(TARGET_LIB)
-	rm -rf $(TARGET_OBJS)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	rm -rf $(TARGET_OBJS)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在上述代码中，我们只需要知道几个函数便可以实现我们想要的功能</p>
 <ul>
 <li>CFLAGS+= -I/opt/nvidia/deepstream/deepstream/sources/includes -I/usr/local/cuda-$ 在这里表示定义一个名为CUFLAGS的变量，于指定编译CUDA源文件时要使用的选项。其中，-I选项用于指定要包含的头文件路径，/opt/nvidia/deepstream/deepstream/sources/includes和/usr/local/cuda-$(CUDA_VER)/include分别是两个包含的头文件路径。在Makefile中，变量用于存储值，可以在Makefile中的其他位置使用。如果我们想在待编译的cpp文件中引入&lt;serial/serial.h&gt;头文件，那么可以在其后加上这句:CFLAGS+= -I/opt/ros/melodic/include</li>

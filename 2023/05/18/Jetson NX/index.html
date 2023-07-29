@@ -260,8 +260,8 @@ Size是分区的大小，最小8GB，建议可以将SSD卡内存全部添入<br>
 <h3 id="5-3-安装配置Python">5.3 安装配置Python</h3>
 <p>5.3.1 默认安装python3.6版本</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> python3-dev python3-testresources python3-setuptools
-<span class="token function">wget</span> https://bootstrap.pypa.io/get-pip.py
-<span class="token function">sudo</span> python3 get-pip.py <span class="token comment"># 该命令可能会失败，显示python3使用的python3.6版本较低，导致不成功</span>
+<span class="token function">wget</span> https://bootstrap.pypa.io/pip/3.6/get-pip.py
+<span class="token function">sudo</span> python3 get-pip.py <span class="token comment"># 该命令可能会失败，显示python3使用的python3.6版本较低，导致不成功，只要下载对应版本的pip就行，使用以下命令进行替换：wget https://bootstrap.pypa.io/pip/3.6/get-pip.py</span>
 <span class="token function">rm</span> get-pip.py <span class="token comment"># 然后换pip源</span>
 <span class="token function">mkdir</span> ~/.pip
 <span class="token function">vim</span> ~/.pip/pip.conf <span class="token comment"># 换清华源</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>

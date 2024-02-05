@@ -27,42 +27,42 @@ TCP提供全双工通信。<br>
 <h3 id="2-1-简单介绍">2.1 简单介绍</h3>
 <p>本款电力载波模块由ROVMaker官方售卖，其可通过电力线传输以太网信号，实现最长300米高速通信。由于传统双绞线不适合远距离传输以太网信号且干扰能力弱，所以此类工况下通常需要高频信号进行通信。 本公司所生产电力载波通信模块可通过L/N电力线进行高频通信，传输速率高(300m传输距离，统一电表范围内，实测可达100Mbps)，最多支持8个节点，工作稳定，抗干扰能力强，操作方便快捷。</p>
 <h3 id="2-2-一般用法">2.2 一般用法</h3>
-<p>电力载波模块供电电压为DC12V，工作组网时需要成对使用，L接L，N接N，用来建立长距离网络通信。</p>
-<p>首先把电力载波模块的网线插入电脑，电力载波模块是以太网透传，两个电力载波模块如下图连接后，相当于一段网线。<br>
-<img src="/images/TCP_Commer/image1.png" alt="image1"></p>
+<p>电力载波模块供电电压为DC12V，工作组网时需要成对使用，L接L，N接N，用来建立长距离网络通信。<br>
+首先把电力载波模块的网线插入电脑，电力载波模块是以太网透传，两个电力载波模块如下图连接后，相当于一段网线。<br>
+<img src="/images/TCP_Commer/image1.jpg" alt="image1"></p>
 <h2 id="三、以太网-eth0静态ip配置">三、以太网-eth0静态ip配置</h2>
 <p>受限于电力载波的使用要求，我们只能选择通过以太网方式实现TCP通信。以下是具体实现过程：</p>
 <h3 id="3-1-Jetson-Nano相关配置">3.1 Jetson Nano相关配置</h3>
 <ol>
 <li>首先终端输入ifconfig，查看相关网络信息。重点关注eth0（即以太网）网络信息。</li>
 <li>如果看见其有ipv4地址信息，则无需再进行配置。否则，按下述操作进行</li>
-<li>修改网络配置文件：/etc/network/interface。使用命令：sudo nano /etc/network/interface</li>
-<li>添加以下内容：<br>
-auto eth0<br>
-iface eth0 inet static<br>
-address 192.168.137.123<br>
-netmask 255.255.255.0<br>
-gateway 192.168.137.1<br>
-dns-nameserver 114.114.114.114</li>
+<li>修改网络配置文件：/etc/network/interface。使用命令：<code>sudo nano /etc/network/interface</code></li>
+<li>添加以下内容： <pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">auto eth0  
+iface eth0 inet static
+address 192.168.137.123
+netmask 255.255.255.0
+gateway 192.168.137.1
+dns-nameserver 114.114.114.114<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li>按ctrl+u进行保存，随后按enter键确认保存文件信息，最后按ctrl+x退出。</li>
-<li>随后可以使用命令开启eth0设备。使用命令：sudo ifup -v eth0</li>
-<li>最后重启设备（使用命令：sudo reboot）后，再次输入ifconfig即可查看到eth0设备的静态固定ipv4地址信息。</li>
+<li>随后可以使用命令开启eth0设备。使用命令：<code>sudo ifup -v eth0</code></li>
+<li>最后重启设备（使用命令：<code>sudo reboot</code>）后，再次输入ifconfig即可查看到eth0设备的静态固定ipv4地址信息。</li>
 </ol>
 <h3 id="3-2-Raspberry相关配置">3.2 Raspberry相关配置</h3>
 <ol>
 <li>首先终端输入ifconfig，查看相关网络信息。重点关注eth0（即以太网）网络信息。</li>
 <li>如果看见其有ipv4地址信息，则无需再进行配置。否则，按下述操作进行</li>
-<li>修改网络配置文件：/etc/network/interface。使用命令：sudo nano /etc/network/interface</li>
-<li>添加以下内容：<br>
-auto eth0<br>
-iface eth0 inet static<br>
-address 192.168.137.111<br>
-netmask 255.255.255.0<br>
-gateway 192.168.137.1<br>
-dns-nameserver 114.114.114.114</li>
+<li>修改网络配置文件：/etc/network/interface。使用命令：<code>sudo nano /etc/network/interface</code></li>
+<li>添加以下内容： <pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">auto eth0  
+iface eth0 inet static
+address 192.168.137.111
+netmask 255.255.255.0
+gateway 192.168.137.1
+dns-nameserver 114.114.114.114<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li>按ctrl+u进行保存，随后按enter键确认保存文件信息，最后按ctrl+x退出。</li>
-<li>随后可以使用命令开启eth0设备。使用命令：sudo ifup -v eth0</li>
-<li>最后重启设备（使用命令：sudo reboot）后，再次输入ifconfig即可查看到eth0设备的静态固定ipv4地址信息。</li>
+<li>随后可以使用命令开启eth0设备。使用命令：<code>sudo ifup -v eth0</code></li>
+<li>最后重启设备（使用命令：<code>sudo reboot</code>）后，再次输入ifconfig即可查看到eth0设备的静态固定ipv4地址信息。</li>
 </ol>
 <h3 id="3-3-配置注意事项">3.3 配置注意事项</h3>
 <p>由上可以发现，Jetson Nano与Raspberry的配置步骤是一致的，二者唯一的区别在于/etc/network/interface文件中的address不同。当前我的理解是二者必须要配置在同一个网段中，即ipv4中前24位是网络号、后8位是主机号。我们可以有两种选择，一是将两个设备的网络号统一设置，主机号有所区别；二是两个设备的网络号不统一，网关（gateway）统一设置。</p>

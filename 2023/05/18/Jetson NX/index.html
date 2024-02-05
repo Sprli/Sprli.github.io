@@ -37,19 +37,19 @@ Ubuntu电脑 or 虚拟机（Ubuntu系统）
 <h2 id="二、进行烧录（参考瑞泰教程）">二、进行烧录（参考瑞泰教程）</h2>
 <h3 id="2-1-系统软件包的下载">2.1 系统软件包的下载</h3>
 <p>2.1.1 烧录所需文件集中在这两个文件夹中，在本部分我选择安装LT4 R32.7.1版本</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311205757974.png" alt="image-20230311205757974" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311205757974.png" alt="image-20230311205757974" style="zoom:50%;" />
 <p>2.1.2根据Jetson类型进行选择</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311205921697.png" alt="image-20230311205921697" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311205921697.png" alt="image-20230311205921697" style="zoom:50%;" />
 <p>2.1.3根据载板型号进行选择</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311210038630.png" alt="image-20230311210038630" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311210038630.png" alt="image-20230311210038630" style="zoom:50%;" />
 <p>2.1.4随便选择一个版本</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311210058553.png" alt="image-20230311210058553" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311210058553.png" alt="image-20230311210058553" style="zoom:50%;" />
 <p>2.1.5下载对应文件，其中rtso-6002对应位置即为载板型号</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311210118374.png" alt="image-20230311210118374" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311210118374.png" alt="image-20230311210118374" style="zoom:50%;" />
 <p>2.1.6选择对应版本的L4T文件</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311210156444.png" alt="image-20230311210156444" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311210156444.png" alt="image-20230311210156444" style="zoom:50%;" />
 <p>2.1.7下载相应文件</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311210216935.png" alt="image-20230311210216935" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311210216935.png" alt="image-20230311210216935" style="zoom:50%;" />
 <h3 id="2-2-在PC端Ubuntu系统进行烧录环境准备">2.2 在PC端Ubuntu系统进行烧录环境准备</h3>
 <p>2.2.1 将上述文件拷贝至烧录主机同一目录下</p>
 <p>2.2.2 解压 Linux Driver Package</p>
@@ -91,22 +91,22 @@ Ubuntu电脑 or 虚拟机（Ubuntu系统）
 <ol>
 <li>
 <p>板子型号查看，一般来说板子上会带有型号，若找不到可以咨询卖方</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311213021400.png" alt="image-20230311213021400" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311213021400.png" alt="image-20230311213021400" style="zoom:50%;" />
 </li>
 <li>
 <p>关于输入选项，如下，可以发现红框圈中的有很多型号的选项，其中rtso-6002e表示rtso-6002-emmc板，rtso-6002则是另一种类型的板子，并且6002-emmc下还有v1.2、v1.3等型号，根据板子进行选择。（一定不要弄错，这些文件是与主板相配的）</p>
 </li>
 </ol>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230311214628664.png" alt="image-20230311214628664"></p>
+<p><img src="/images/Jetson/image-20230311214628664.png" alt="image-20230311214628664"></p>
 <p>3.3.3 报错一</p>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230311214653624.png" alt="image-20230311214653624"></p>
+<p><img src="/images/Jetson/image-20230311214653624.png" alt="image-20230311214653624"></p>
 <p>如上报错需考虑两个原因：</p>
 <ol>
 <li>主机与板子进行数据传输的Micro-USB数据线是否具有传输数据的作用，可以使用lsusb查看是否含有Nvidia Crop；</li>
 <li>板子是否进入了recovery模式。</li>
 </ol>
 <p>3.3.4 报错二</p>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230319005550878.png" alt="image-20230319005550878"></p>
+<p><img src="/images/Jetson/image-20230319005550878.png" alt="image-20230319005550878"></p>
 <p>仔细观察可以发现问题在于一个<code>.py</code>文件执行错误，可以使用命令<code>$ sudo apt install python2.7 python3 python</code>安装python，然后重新烧录解决。</p>
 <h3 id="3-4-配置板子系统">3.4 配置板子系统</h3>
 <p>由于瑞泰板子是上电自启动的，将板子和显示屏以及键鼠连接，进入类似Ubuntu系统开机配置界面，除了地区选择上海外，其余保持默认即可。能够正常开机，则表明烧录成功。随后可以发现，其图形化界面和Ubuntu几乎没有什么区别。</p>
@@ -154,13 +154,13 @@ Size是分区的大小，最小8GB，建议可以将SSD卡内存全部添入<br>
 <code>sudo gedit ./copy-rootfs-ssd.sh</code><br>
 将文件中的<code>/dev/nvme0n1p1 </code>修改为<code>/dev/mmcblk1</code><br>
 <code>sudo ./copy-rootfs-ssd.sh</code></p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311225106076.png" alt="image-20230311225106076" style="zoom: 80%;" />
+<img src="/images/Jetson/image-20230311225106076.png" alt="image-20230311225106076" style="zoom: 80%;" />
 <p>3.2.4 进入到<code>rootOnNVMe/data</code>目录下，修改其中的脚本文件:<code>setssdroot.sh</code>与<code>setssdroot.service</code>，将其中的<code>/dev/nvme0n1p1</code>修改为<code>/dev/mmcblk1</code>，方法同上。</p>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230311225229373.png" alt="image-20230311225229373"></p>
+<p><img src="/images/Jetson/image-20230311225229373.png" alt="image-20230311225229373"></p>
 <p>3.2.5 回到rootOnNVMe目录下，执行以下命令：<br>
 <code>sudo ./setup-service.sh</code></p>
 <p>成功后如下图：</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311225311334.png" alt="image-20230311225311334" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311225311334.png" alt="image-20230311225311334" style="zoom:50%;" />
 <p>3.2.6 重新启动jetson板后，使用命令<code>$ df -h</code>查看，可以发现系统已经完成迁移</p>
 <h2 id="四、安装Jepack">四、安装Jepack</h2>
 <h3 id="4-1、基本步骤">4.1、基本步骤</h3>
@@ -178,29 +178,29 @@ Size是分区的大小，最小8GB，建议可以将SSD卡内存全部添入<br>
 <ol>
 <li>
 <p>登录界面（低版本可能无法登录）</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311232026679.png" alt="image-20230311232026679" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311232026679.png" alt="image-20230311232026679" style="zoom:50%;" />
 </li>
 <li>
 <p>点击圈中的1、2，进行选择Jetson类型以及与LT4相对应的Jetpack版本，3取消勾选。如果2中未发现与其对应的Jetpack版本，则运行sdkmanager的命令改为：<code>$ sdkmanager --archivedversions</code>，其它操作不变。</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311232300525.png" alt="image-20230311232300525" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311232300525.png" alt="image-20230311232300525" style="zoom:50%;" />
 </li>
 <li>
 <p>由于以及安装过系统，圈中的1取消勾选，圈中的2可以选择合适的位置（默认不变），圈中的3注意取消勾选<strong>Download now.Install later.<strong>点击</strong>continue</strong>。</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311233159191.png" alt="image-20230311232542687" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311233159191.png" alt="image-20230311232542687" style="zoom:50%;" />
 </li>
 <li>
 <p>输入PC端Ubuntu主机密码</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311232559144.png" alt="image-20230311232559144" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311232559144.png" alt="image-20230311232559144" style="zoom:50%;" />
 </li>
 <li>
 <p>圈中的1，实际上应是显示有设备连接的；圈中的2填写<strong>板子Ubuntu系统</strong>的Username和Password；随后点击Install。</p>
-<img src="F:\myblog\blog\themes\next\source/images/Jetson/image-20230311233500272.png" alt="image-20230311233500272" style="zoom:50%;" />
+<img src="/images/Jetson/image-20230311233500272.png" alt="image-20230311233500272" style="zoom:50%;" />
 </li>
 <li>
 <p>接着进入以下界面，这些指标都是板子的指标，如内存是否足够、网络是否连接等。</p>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230311234633908.png" alt="image-20230311234633908"></p>
+<p><img src="/images/Jetson/image-20230311234633908.png" alt="image-20230311234633908"></p>
 <p>7.最后出现接下来画面即成功</p>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230319113455316.png" alt="image-20230319113455316"></p>
+<p><img src="/images/Jetson/image-20230319113455316.png" alt="image-20230319113455316"></p>
 </li>
 </ol>
 <h3 id="4-2-问题及解决">4.2 问题及解决</h3>
@@ -208,7 +208,7 @@ Size是分区的大小，最小8GB，建议可以将SSD卡内存全部添入<br>
 <ol>
 <li>在jetson板上终端输入：<code>$ ping -c 3 www.nvidia.com</code></li>
 </ol>
-<p><img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230311234239264.png" alt="image-20230311234239264"></p>
+<p><img src="/images/Jetson/image-20230311234239264.png" alt="image-20230311234239264"></p>
 <ol start="2">
 <li>
 <p>将出现的Ip地址放到jetson板子的/etc/hosts文件中</p>
@@ -480,7 +480,7 @@ quit<span class="token punctuation">(</span><span class="token punctuation">)</s
 然后在命令框输入<br>
 <code>sudo gedit /usr/local/cuda/include/cuda_gl_interop.h</code><br>
 这时会弹出一个文件如下图<br>
-<img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230322013045837.png" alt="image-20230322013045837"><br>
+<img src="/images/Jetson/image-20230322013045837.png" alt="image-20230322013045837"><br>
 找到红框内代码，并按照图中代码更改为以上内容，然后点save保存，退出。</p>
 </li>
 <li>
@@ -501,7 +501,7 @@ quit<span class="token punctuation">(</span><span class="token punctuation">)</s
 <ol start="7">
 <li>配置opencv环境：<br>
 <code>sudo gedit /etc/ld.so.conf.d/opencv.conf # 创建并打开该文件，输入以下内容</code><br>
-<img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230322013134812.png" alt="image-20230322013134812"><br>
+<img src="/images/Jetson/image-20230322013134812.png" alt="image-20230322013134812"><br>
 执行下面的命令，使得刚才配置的路径生效<br>
 <code>sudo ldconfig</code><br>
 然后打开bash.bashrc文件<br>
@@ -511,13 +511,13 @@ quit<span class="token punctuation">(</span><span class="token punctuation">)</s
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">PKG_CONFIG_PATH</span><span class="token operator">=</span><span class="token variable">$PKG_CONFIG_PATH</span>:/usr/local/lib/pkgconfig
 <span class="token builtin class-name">export</span> PKG_CONFIG_PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如图：<br>
-<img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/img1.png" alt="img1"><br>
+<img src="/images/Jetson/img1.png" alt="img1"><br>
 然后保存文件，使其生效<br>
 <code>source /etc/bash.bashrc</code></p>
 <ol start="8">
 <li>检查是否成功安装opencv<br>
 可以先在jtop查看opencv的安装版本，正确安装后会显示：<br>
-<img src="F:%5Cmyblog%5Cblog%5Cthemes%5Cnext%5Csource/images/Jetson/image-20230322013148567.png" alt="image-20230322013148567"></li>
+<img src="/images/Jetson/image-20230322013148567.png" alt="image-20230322013148567"></li>
 <li>之后连接一个摄像头，在终端输入，测试opencv是否能正常使用：</li>
 </ol>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /opencv-3.4.5/samples/cpp/example_cmake

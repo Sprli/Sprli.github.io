@@ -89,6 +89,8 @@
       
         <tags>
             
+            <tag> Jetson </tag>
+            
             <tag> 深度学习 </tag>
             
             <tag> TensorRT </tag>

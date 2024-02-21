@@ -17,5 +17,6 @@
   color: var(--primary-text-color);
 }
 .header-widget h3 {
+  font-family: Microsoft YaHei;
   font-weight: bold;
 }

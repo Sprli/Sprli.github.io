@@ -129,11 +129,11 @@
     
     <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="TensorRT" scheme="https://sprli.github.io/tags/TensorRT/"/>
-    
     <category term="DeepStream" scheme="https://sprli.github.io/tags/DeepStream/"/>
     
     <category term="ROS" scheme="https://sprli.github.io/tags/ROS/"/>
+    
+    <category term="TensorRT" scheme="https://sprli.github.io/tags/TensorRT/"/>
     
     <category term="Yolov5" scheme="https://sprli.github.io/tags/Yolov5/"/>
     

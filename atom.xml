@@ -6,7 +6,7 @@
   <link href="https://sprli.github.io/atom.xml" rel="self"/>
   
   <link href="https://sprli.github.io/"/>
-  <updated>2024-02-17T14:58:32.434Z</updated>
+  <updated>2024-03-20T12:44:42.347Z</updated>
   <id>https://sprli.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jetson Nano安装并使用PyQt5进行界面开发设计</title>
+    <link href="https://sprli.github.io/2024/03/20/PyQt_help/"/>
+    <id>https://sprli.github.io/2024/03/20/PyQt_help/</id>
+    <published>2024-03-20T09:48:33.913Z</published>
+    <updated>2024-03-20T12:44:42.347Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/PyQt/pyqt_pic.png" alt="cover"></p><h2 id="问题背景">问题背景</h2><p>这个问题是我在做海草项目时，要在上位机Jetson Nano上制作相关界面，由于第一次接触该方面，由此写下该篇博客对其进行记录。</p><h2 id="一、安装PyQt5">一、安装PyQt5</h2><ol><li>使用以下命令安装： <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> pyqt5*<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> python3-pyqt5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li>导入PyQt5包至Python虚拟环境<br>如果你需要在虚拟环境中使用PyQt5，按如下步骤将系统的PyQt5库链接到你的虚拟环境中<ul><li>首先在终端执行以下指令查找编译好的PyQt5库相关文件的路径  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">find</span> / <span class="token parameter variable">-iname</span> <span class="token string">"*PyQt5*"</span> <span class="token comment"># 得到类似路径/usr/lib/python3/dist-packages/PyQt5</span><span class="token function">sudo</span> <span class="token function">find</span> / <span class="token parameter variable">-iname</span> <span class="token string">"*sip*"</span>   <span class="token comment"># 得到类似路径/usr/lib/python3/dist-packages/sip</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li>随后找到本地虚拟环境的site-packages文件夹,并链接到查找到的PyQt5库相关文件路径即可  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-s</span> /usr/lib/python3/dist-packages/PyQt5/  /home/nx407/.virtualenv/torchli/lib/python3.6/site-packages  <span class="token comment"># 注意ln，link的意思，不是大写i</span><span class="token function">ln</span> <span class="token parameter variable">-s</span> /usr/lib/python3/dist-packages/sip*  /home/nx407/.virtualenv/torchli/lib/python3.6/site-packages   <span class="token comment"># 注意ln，link的意思，不是大写i</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li>安装完成后，在虚拟环境中执行下列指令以确保python能正确调用pyQt5。  <pre class="line-numbers language-python" data-language="python"><code class="language-python">python               <span class="token operator">//</span>进入python<span class="token keyword">import</span> PyQt5<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtWidgets <span class="token keyword">import</span> QApplication<span class="token punctuation">,</span>QWidget<span class="token keyword">from</span> PyQt5 <span class="token keyword">import</span> QtCore<span class="token keyword">from</span> PyQt5<span class="token punctuation">.</span>QtCore <span class="token keyword">import</span> <span class="token operator">*</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li></ol><h2 id="二、使用QtDesigner设计界面">二、使用QtDesigner设计界面</h2><h3 id="2-1-开发流程">2.1 开发流程</h3><ol><li>用PyQt5官方自带的qtdesigner来进行界面设计（简单、高效），使用以下命令打开Jetson上的QtDesigner软件 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/usr/lib/aarch64-linux-gnu/qt5/bin/designer <span class="token comment"># 正常情况下都会默认安装在此位置，如果找不到的话，可以使用上面类似命令搜索designer位置</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>关于QtDesigner的使用，建议上bilibili搜索一下，多看几个相关视频差不多就能应用了。在这里我推荐一个适合小白的Up主：<a href="https://www.bilibili.com/video/BV1cJ411R7bP/?share_source=copy_web&vd_source=c3a40e8c56148ea3bb20308f8607a1f9">【Python Qt 图形界面编程 - PySide2 PyQt5 PyQt PySide】白月黑羽编程</a></li><li>在完成界面的基本布局后，可以通过添加<strong>QSS</strong>语言来美化你的界面，关于QSS的使用可以参考<a href="https://blog.csdn.net/WL0616/article/details/129118087">【QT】史上最全最详细的QSS样式表用法及用例说明</a></li><li>最后就可以着手敲代码，来实现自己想要的界面功能了。</li></ol><h3 id="2-2-界面设计流程">2.2 界面设计流程</h3><ol><li>首先确定界面显示平台的分辨率大小</li><li>然后根据实际需求来构想界面要实现的功能</li><li>从实现功能角度去设计你的界面布局，如QFrame、Stacked Widget、QPushButton、QLabel等部件的摆放与功能</li><li>接着对整个界面布局进行美化设计（比如使用Adobe XD软件）</li><li>最后使用QtDesigner结合QSS实现所设计的界面</li></ol><p>需要注意的是，在界面布局设计过程中一定要结合Frame拼接的理念去设计，并且只有第五步才真正需要使用到QtDesigner软件。</p><h2 id="三、关于PyQt5开发的经验">三、关于PyQt5开发的经验</h2><h3 id="3-1-代码开发平台选择">3.1 代码开发平台选择</h3><p>一般而言，我会选择在Windows电脑上先进行PyQt的界面开发，待与界面相关的代码在Windows本地运行没问题后，再将代码移植到Jetson上进行运行检查。但这样做的前提是，一定要将Windows平台上的PyQt5与Jetson上安装的保持版本一致（或者能兼容运行）即可。</p><h3 id="3-2-QtDesigner开发的理解">3.2 QtDesigner开发的理解</h3><p>使用QtDesigner设计得到的界面是一个个Frame或者Widget组合嵌套而成，而使用者可以在Frame或Widget中添加Label和PushButton等元素来实现一些交互功能。在完成界面的基本布局后，可以通过<strong>QSS</strong>语言来美化你的界面，界面的一些交互功能大部分都需要使用你的代码实现。</p><h2 id="四、Jetson-Nano桌面的布局设计">四、Jetson Nano桌面的布局设计</h2><p>由于Jetson nano的桌面布局，通常会导致我们的界面无法完全铺满整个屏幕，进而就会导致我们设计的界面在布局、美观等方面受到影响，因此需要对Jetson nano的桌面布局进行修改。</p><h3 id="4-1-隐藏桌面的侧栏">4.1 隐藏桌面的侧栏</h3><ol><li>首先安装<strong>gnome tweak</strong>： <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gnome-tweaks<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>确保当前账号登录的桌面是gnome tweak<ul><li>退出当前系统</li><li>然后点击gnome，再登录。</li></ul></li><li>安装扩展<strong>dash to dock</strong> <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gnome-shell-extension-dashtodock<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>重新启动系统，命令行输入<code>reboot</code></li><li>重启后，命令行输入<code>gnome-tweaks</code>打开工具</li><li>然后按如下进行桌面配置——取消侧栏</li></ol><h3 id="4-2-隐藏桌面的顶栏">4.2 隐藏桌面的顶栏</h3><ol><li>安装拓展<strong>hide top bar</strong> <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> gnome-shell-extension-autohidetopbar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li>安装成功后，命令行输入<code>gnome-tweaks</code>打开工具</li><li>然后按如下进行桌面配置——取消顶栏</li></ol><h3 id="4-3-界面效果展示">4.3 界面效果展示</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/PyQt/pyqt_pic.png&quot; alt=&quot;cover&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;问题背景&quot;&gt;问题背景&lt;/h2&gt;
+&lt;p&gt;这个问题是我在做海草项目时，要在上位机Jetson Nano上制作相关界面，由于第一次接触该方面，由此写下该篇博</summary>
+      
+    
+    
+    
+    <category term="载板开发" scheme="https://sprli.github.io/categories/%E8%BD%BD%E6%9D%BF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Jetson" scheme="https://sprli.github.io/tags/Jetson/"/>
+    
+    <category term="PyQt5" scheme="https://sprli.github.io/tags/PyQt5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jetson nano自启动设置以及取消sudo</title>
+    <link href="https://sprli.github.io/2024/03/20/Self_Start_Jetson/"/>
+    <id>https://sprli.github.io/2024/03/20/Self_Start_Jetson/</id>
+    <published>2024-03-20T08:36:16.566Z</published>
+    <updated>2024-03-20T12:53:41.559Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/Self_Start_Jetson/nano_pic.png" alt="cover"></p><h2 id="包括取消sudo密码">包括取消sudo密码</h2><h1>更新电力载波中的gateway，防止联网失败</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/Self_Start_Jetson/nano_pic.png&quot; alt=&quot;cover&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;包括取消sudo密码&quot;&gt;包括取消sudo密码&lt;/h2&gt;
+&lt;h1&gt;更新电力载波中的gateway，防止联网失败&lt;/h1&gt;
+</summary>
+      
+    
+    
+    
+    <category term="载板开发" scheme="https://sprli.github.io/categories/%E8%BD%BD%E6%9D%BF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Jetson" scheme="https://sprli.github.io/tags/Jetson/"/>
+    
+    <category term="自启动" scheme="https://sprli.github.io/tags/%E8%87%AA%E5%90%AF%E5%8A%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>基于电力载波的TCP通信实现</title>

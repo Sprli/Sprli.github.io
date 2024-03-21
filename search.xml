@@ -143,11 +143,11 @@
       
         <tags>
             
-            <tag> Jetson </tag>
+            <tag> TensorRT </tag>
             
             <tag> 深度学习 </tag>
             
-            <tag> TensorRT </tag>
+            <tag> Jetson </tag>
             
             <tag> DeepStream </tag>
             
@@ -222,11 +222,11 @@
       
         <tags>
             
+            <tag> 深度学习 </tag>
+            
             <tag> Jetson </tag>
             
             <tag> Pytorch </tag>
-            
-            <tag> 深度学习 </tag>
             
         </tags>
       
@@ -251,9 +251,9 @@
       
         <tags>
             
-            <tag> 深度学习 </tag>
-            
             <tag> TensorRT </tag>
+            
+            <tag> 深度学习 </tag>
             
             <tag> Onnx </tag>
             

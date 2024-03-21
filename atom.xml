@@ -182,11 +182,11 @@
     <category term="问题解决" scheme="https://sprli.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-    <category term="Jetson" scheme="https://sprli.github.io/tags/Jetson/"/>
+    <category term="TensorRT" scheme="https://sprli.github.io/tags/TensorRT/"/>
     
     <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="TensorRT" scheme="https://sprli.github.io/tags/TensorRT/"/>
+    <category term="Jetson" scheme="https://sprli.github.io/tags/Jetson/"/>
     
     <category term="DeepStream" scheme="https://sprli.github.io/tags/DeepStream/"/>
     
@@ -271,11 +271,11 @@
     <category term="载板开发" scheme="https://sprli.github.io/categories/%E8%BD%BD%E6%9D%BF%E5%BC%80%E5%8F%91/"/>
     
     
+    <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
     <category term="Jetson" scheme="https://sprli.github.io/tags/Jetson/"/>
     
     <category term="Pytorch" scheme="https://sprli.github.io/tags/Pytorch/"/>
-    
-    <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -301,9 +301,9 @@
     <category term="问题解决" scheme="https://sprli.github.io/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-    <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="TensorRT" scheme="https://sprli.github.io/tags/TensorRT/"/>
+    
+    <category term="深度学习" scheme="https://sprli.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Onnx" scheme="https://sprli.github.io/tags/Onnx/"/>
     

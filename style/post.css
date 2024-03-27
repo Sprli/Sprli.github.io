@@ -40,7 +40,7 @@
   background: transparent;
 }
 .post-page .post-content pre code {
-  padding: 15px;
+  padding: 5px;
   border: 1px solid var(--border-line-color);
   background: var(--pre-code-bg-color);
 }
